@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire Covid-19</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 style="text-align:center; font-size:48px; color:brown ">Diagnostic Covid-19</h1>
+    </header>
+    <article style="text-align:center; font-size:32px" class="diag" id="diagno"></article>
+    <script language="javascript">
+        ls = window.localStorage;
+        score = ls.getItem("score");
+        chronique = ls.getItem("chronique");
+        age = ls.getItem("age");
+        diagno = ""
+        if ((score >= 0 && score <= 7) && age < 65)
+            document.getElementById("diagno").innerHTML += "Vous devirez aller bien, mais faites attention à vous, et n’oubliez pas de respecter les gestes barrières.";
+        if (score >= 0 && score <= 7 && age >= 65)
+            document.getElementById("diagno").innerHTML += "Vous devirez aller bien, mais vous devriez rester confiné chez vous."
+        if ((score >= 8 && score <= 18) && !(chronique.checked))
+            document.getElementById("diagno").innerHTML += "Vous avez des majeurs symptômes du COVID-19. Vous devriez vous confiner au plus vite, et faire un test de dépistage."
+        if ((score >= 8 && score <= 18) && (chronique.checked))
+            document.getElementById("diagno").innerHTML += "Précipitez-vous au centre COVID le plus proche pour être pris en charge."
+        if (score > 18)
+            document.getElementById("diagno").innerHTML = "Précipitez-vous au centre COVID le plus proche pour être pris en charge."
+    </script>
+</body>
+
+</html>
